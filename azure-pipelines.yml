@@ -15,15 +15,11 @@ steps:
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '18' 
-    jdkArchitectureOption:  'x64'
-    jdkSourceOption:  'AzureStorage'
-    #jdkFile: # Required when jdkSourceOption == LocalDirectory
-    #azureResourceManagerEndpoint: # Required when jdkSourceOption == AzureStorage
-    #azureStorageAccountName: # Required when jdkSourceOption == AzureStorage
-    #azureContainerName: # Required when jdkSourceOption == AzureStorage
-    #azureCommonVirtualFile: # Required when jdkSourceOption == AzureStorage
-    jdkDestinationDirectory: 
-    #cleanDestinationDirectory: true
+    jdkArchitectureOption:  x64
+    jdkSourceOption:  LocalDirectory
+    jdkFile: 'C:\Users\senay\Downloads\jdk-18.0.1.1_windows-x64_bin.zip'
+    jdkDestinationDirectory: 'C:\Users\senay\Downloads\azuretest'
+    cleanDestinationDirectory: true
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
