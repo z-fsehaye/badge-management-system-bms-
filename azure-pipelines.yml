@@ -10,23 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-# Java tool installer
-# Acquire a specific version of Java from a user-supplied Azure blob or the tool cache and sets JAVA_HOME
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '18' 
-    jdkArchitectureOption:  x64
-    jdkSourceOption:  LocalDirectory
-    jdkFile: 'C:\Users\senay\Downloads\jdk-18.0.1.1_windows-x64_bin.zip'
-    jdkDestinationDirectory: 'C:\Users\senay\Downloads\azuretest'
-    cleanDestinationDirectory: true
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.18'
-    jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenOptions: '-Xmx3072m'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
